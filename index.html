@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>한국이러닝인재개발원 | 클로드강의 집체교육</title>
+<meta name="description" content="한국이러닝인재개발원 - 클로드강의 집체교육">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root { --blue:#1e4fd8; --blue-dark:#0b1b3f; --blue-soft:#eef3ff; --red:#e5262e; --red-dark:#b81d24; --gray:#d9dde5; --text:#1a2233; --muted:#5b6578; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Pretendard Variable",Pretendard,system-ui,sans-serif; color:var(--text); background:#fff; font-size:16px; line-height:1.7; }
+  a { color:inherit; }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 20px; }
+  header { position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid #e6e9f0; }
+  header .wrap { display:flex; align-items:center; justify-content:space-between; height:64px; gap:16px; }
+  .logo { font-weight:800; color:var(--blue); text-decoration:none; font-size:18px; }
+  nav { display:flex; gap:24px; font-size:15px; }
+  nav a { text-decoration:none; color:var(--muted); }
+  nav a:hover { color:var(--blue); }
+  .btn { display:inline-block; border:0; border-radius:999px; padding:12px 24px; font:inherit; font-weight:700; text-decoration:none; cursor:pointer; }
+  .btn-red { background:var(--red); color:#fff; }
+  .btn-red:hover { background:var(--red-dark); }
+  .btn-line { background:#fff; color:var(--blue-dark); }
+  .hero { position:relative; background:var(--gray); min-height:560px; display:flex; align-items:center; }
+  .hero::after { content:"사진 자리"; position:absolute; right:20px; bottom:16px; color:#8a92a3; font-size:13px; }
+  .hero-box { background:rgba(11,27,63,.88); color:#fff; padding:40px; border-radius:16px; max-width:640px; }
+  .hero small { color:#9fb6ff; font-weight:700; letter-spacing:.02em; }
+  .hero h1 { font-size:48px; line-height:1.25; margin:8px 0 12px; font-weight:800; }
+  .hero h1 em { font-style:normal; color:#ff5a5f; }
+  .hero p { margin:0 0 28px; color:#d7def0; font-size:18px; }
+  .hero .actions { display:flex; gap:12px; flex-wrap:wrap; }
+  section { padding:88px 0; }
+  .eyebrow { color:var(--red); font-weight:700; font-size:14px; }
+  h2 { font-size:36px; line-height:1.3; margin:4px 0 40px; color:var(--blue-dark); font-weight:800; }
+  .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .card { border:1px solid #e6e9f0; border-radius:16px; overflow:hidden; background:#fff; }
+  .card .ph { background:var(--gray); aspect-ratio:16/10; }
+  .card div.body { padding:20px 22px 24px; }
+  .card h3 { margin:0 0 6px; font-size:20px; color:var(--blue-dark); }
+  .card p { margin:0; color:var(--muted); }
+  .steps-bg { background:var(--blue-soft); }
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; counter-reset:s; }
+  .step { background:#fff; border-radius:16px; padding:28px 24px; }
+  .step::before { counter-increment:s; content:counter(s); display:inline-grid; place-items:center; width:36px; height:36px; border-radius:50%; background:var(--blue); color:#fff; font-weight:800; margin-bottom:12px; }
+  .step h3 { margin:0 0 4px; font-size:20px; color:var(--blue-dark); }
+  .step p { margin:0; color:var(--muted); }
+  .contact { display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:start; }
+  .contact-info p { margin:0 0 8px; }
+  .contact-info strong { color:var(--blue-dark); }
+  form { background:#fff; border:1px solid #e6e9f0; border-radius:16px; padding:28px; display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  label { display:block; font-size:14px; font-weight:700; margin-bottom:6px; }
+  label .req { color:var(--red); }
+  input, textarea { width:100%; font:inherit; padding:12px 14px; border:1px solid #cfd5e1; border-radius:10px; background:#fff; }
+  input:focus, textarea:focus { outline:2px solid var(--blue); border-color:transparent; }
+  .full { grid-column:1/-1; }
+  .agree { display:flex; gap:8px; align-items:flex-start; font-size:14px; color:var(--muted); }
+  .agree input { width:auto; margin-top:5px; }
+  .hp { position:absolute; left:-9999px; }
+  #msg { margin:0; font-weight:700; min-height:1.7em; }
+  #msg.ok { color:var(--blue); } #msg.err { color:var(--red); }
+  footer { background:var(--blue-dark); color:#b9c3db; padding:40px 0; font-size:14px; }
+  footer strong { color:#fff; font-size:16px; }
+  .float { position:fixed; right:20px; bottom:20px; display:flex; flex-direction:column; gap:10px; z-index:20; }
+  .float a { box-shadow:0 6px 20px rgba(0,0,0,.18); text-align:center; }
+  @media (max-width:900px) {
+    nav { display:none; }
+    .cards, .steps { grid-template-columns:1fr; }
+    .contact { grid-template-columns:1fr; gap:32px; }
+  }
+  @media (max-width:600px) {
+    header .btn { display:none; }
+    .hero { min-height:480px; }
+    .hero-box { padding:28px 22px; margin:0; }
+    .hero h1 { font-size:32px; }
+    .hero p { font-size:16px; }
+    section { padding:64px 0; }
+    h2 { font-size:28px; margin-bottom:28px; }
+    form { grid-template-columns:1fr; padding:20px; }
+    .float { left:0; right:0; bottom:0; flex-direction:row; gap:0; }
+    .float a { flex:1; border-radius:0; padding:16px; box-shadow:none; }
+    body { padding-bottom:56px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">한국이러닝인재개발원</a>
+    <nav>
+      <a href="#about">강의 소개</a>
+      <a href="#steps">진행 순서</a>
+      <a href="#contact">상담 신청</a>
+    </nav>
+    <a class="btn btn-red" href="#contact">상담 신청</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-box">
+        <small>한국이러닝인재개발원</small>
+        <h1><em>클로드</em>강의<br>집체교육</h1>
+        <p>(입력 필요: 강의를 한두 문장으로 더 소개하는 글)</p>
+        <div class="actions">
+          <a class="btn btn-red" href="#contact">상담 신청하기</a>
+          <a class="btn btn-line" href="tel:010-9277-0339">전화 010-9277-0339</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="eyebrow">강의 소개</div>
+      <h2>클로드강의 집체교육</h2>
+      <div class="cards">
+        <article class="card"><div class="ph"></div><div class="body"><h3>(입력 필요: 과정 이름 1)</h3><p>(입력 필요: 과정 설명)</p></div></article>
+        <article class="card"><div class="ph"></div><div class="body"><h3>(입력 필요: 과정 이름 2)</h3><p>(입력 필요: 과정 설명)</p></div></article>
+        <article class="card"><div class="ph"></div><div class="body"><h3>(입력 필요: 과정 이름 3)</h3><p>(입력 필요: 과정 설명)</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="steps" class="steps-bg">
+    <div class="wrap">
+      <div class="eyebrow">진행 순서</div>
+      <h2>상담부터 교육까지</h2>
+      <div class="steps">
+        <div class="step"><h3>상담 신청</h3><p>아래 양식이나 전화로 문의를 남겨 주세요.</p></div>
+        <div class="step"><h3>일정·인원 협의</h3><p>교육 일정과 인원, 내용을 함께 정합니다.</p></div>
+        <div class="step"><h3>현장 교육</h3><p>정해진 날짜에 집체교육을 진행합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div class="contact-info">
+        <div class="eyebrow">상담 신청</div>
+        <h2>교육 문의를 남겨 주세요</h2>
+        <p><strong>전화</strong> <a href="tel:010-9277-0339">010-9277-0339</a></p>
+        <p><strong>이메일</strong> <a href="mailto:taesunghyuk@gmail.com">taesunghyuk@gmail.com</a></p>
+      </div>
+      <form id="form" novalidate>
+        <div><label for="name">이름 <span class="req">*</span></label><input id="name" name="name" maxlength="30" required autocomplete="name"></div>
+        <div><label for="org">회사·기관명</label><input id="org" name="org" maxlength="60" autocomplete="organization"></div>
+        <div><label for="phone">연락처 <span class="req">*</span></label><input id="phone" name="phone" type="tel" maxlength="20" required autocomplete="tel" placeholder="010-0000-0000"></div>
+        <div><label for="email">이메일</label><input id="email" name="email" type="email" maxlength="100" autocomplete="email"></div>
+        <div><label for="headcount">희망 인원</label><input id="headcount" name="headcount" maxlength="20" placeholder="예: 20명"></div>
+        <div><label for="schedule">희망 일정</label><input id="schedule" name="schedule" maxlength="50" placeholder="예: 12월 둘째 주"></div>
+        <div class="full"><label for="message">문의 내용</label><textarea id="message" name="message" rows="5" maxlength="1000"></textarea></div>
+        <div class="hp" aria-hidden="true"><label for="website">비워 두세요</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+        <label class="agree full"><input type="checkbox" id="agree" required> 상담을 위해 이름·연락처·이메일 등을 수집하는 것에 동의합니다. (보유 기간: 입력 필요)</label>
+        <div class="full"><button class="btn btn-red" type="submit" id="submit">상담 신청 보내기</button></div>
+        <p id="msg" class="full" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>한국이러닝인재개발원</strong><br>
+    전화 010-9277-0339 · 이메일 taesunghyuk@gmail.com
+  </div>
+</footer>
+
+<div class="float">
+  <a class="btn btn-red" href="#contact">상담 신청</a>
+  <a class="btn btn-line" href="tel:010-9277-0339">전화하기</a>
+</div>
+
+<script>
+  const form = document.getElementById('form'), msg = document.getElementById('msg'), btn = document.getElementById('submit');
+  const loadedAt = Date.now();
+  const say = (t, ok) => { msg.textContent = t; msg.className = 'full ' + (ok ? 'ok' : 'err'); };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(form));
+    if (!d.name.trim()) return say('이름을 적어 주세요.');
+    if (!d.phone.trim()) return say('연락처를 적어 주세요.');
+    if (!document.getElementById('agree').checked) return say('개인정보 수집에 동의해 주세요.');
+    btn.disabled = true; say('보내는 중이에요…', true);
+    try {
+      const r = await fetch('/api/contact', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ ...d, elapsed: Date.now() - loadedAt }) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j.error || '잠시 후 다시 시도해 주세요.');
+      form.reset(); say('접수되었어요. 곧 연락드릴게요!', true);
+    } catch (err) { say(err.message); }
+    btn.disabled = false;
+  });
+</script>
+</body>
+</html>
